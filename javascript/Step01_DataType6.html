@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step06_DataType6.html</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>javascript 데이터 type</h1>
+    <p></p>
+    <button onclick="pushElephant()">코끼리를 냉장고에 넣기</button>
+    <div class="box" onmouseleave="pushElephant()"></div>
+    <script>
+
+        /*
+        //코끼리를 냉장고에 넣기
+        console.log("냉장고 문을 연다.");
+        console.log("코끼리를 냉장고에 집어 넣는다.");
+        console.log("냉장고 문을 닫는다.")
+        */
+
+        //디버그 콘솔에서 함수명만 쓰는건 참조, 함수()는 호출(call) >> 모아 둔 자바스크립트를 한 번에 일괄 실행하겠다!
+        let pushElephant = function () {
+            //코끼리를 냉장고에 넣기
+            console.log("냉장고 문을 연다.");
+            console.log("코끼리를 냉장고에 집어 넣는다.");
+            console.log("냉장고 문을 닫는다.");
+        };
+
+        // alert() > builtin function
+        // console.log() > builtin object > function type
+        // let console = {log : function(){ }, ...};
+        // console object 는 이런 모양이라는 것을 알 수 있다.
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step03_document2.html</title>
+    <style>
+        p {
+            color: blue;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            cursor: pointer;
+            /* margin-left: 100px; */
+            transition: margin-left 0.4s linear;
+            /* liner 일정한 속도 */
+            /* ease-out 신속히 출발 부드럽게 안착 */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>인라인 css 테스트</h1>
+    <!-- 인라인 css가 더 우선순위가 높음 ! -->
+    <!-- 콘솔에서 document.querySelector("p").style.color="red" 이런식으로 작성하면 elements에 밑에처럼 바뀜 ㅇㅇ-->
+    <!-- document.querySelector("p").style.display = "none"; // "block"; -->
+    <!-- <p style="color: red; background-color: antiquewhite;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi aperiam nulla aliquid sint nam facere autem illum delectus explicabo nihil non vel assumenda fuga, voluptate libero pariatur quidem a dolores!</p>  -->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque magnam magni aperiam, ratione facere saepe tempora
+        amet sequi fugit vero culpa minus quibusdam sunt ex veritatis porro molestiae provident dignissimos!</p>
+    <div class="box" onclick="move()">눌러보셈</div>
+    <script>
+        /*
+            위의 box div를 클릭하면 우측으로 100px 이동하도록 프로그래밍 해보세요.
+            - xxx.style.margin-left: 100px;
+        */
+        //실행할 code 를 함수 안에 준비해둔다.
+        let move = function(){
+            //document.querySelector(".box").style.marginleft="100px";
+            document.querySelector(".box").style.marginLeft="100px";
+        };
+
+        // let move=()=>{
+        //     document.querySelector(".box").style.marginLeft="100px";
+        // };
+
+    </script>
+</body>
+
+</html>
