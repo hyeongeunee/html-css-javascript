@@ -48,6 +48,7 @@
         let snipeX = 0, snipeY = 0;
 
         setInterval(() => {
+            //여기 함수 내부는 1/100초마다 한 번씩  실행된다.
             context.clearRect(0, 0, 800, 500);
             context.drawImage(snipeImg, snipeX - 50, snipeY - 50, 100, 100);
         }, 10);
