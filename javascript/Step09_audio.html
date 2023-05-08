@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step09_audio.html</title>
+</head>
+
+<body>
+    <h1>오디오 재생</h1>
+    <audio src="sounds/piano.mp3" controls></audio>
+    <script>
+        //오디오 객체를 생성해서 오디오 로딩하기
+        const music = new Audio("sounds/piano.mp3")
+        //로딩이 완료되었을 때 호출되는 함수 등록
+        music.onloadeddata = () => { //music.currentTime > 현재 재생 위치 알랴줌 / music.duration > 총 재생시간 알랴줌
+            console.log("음악로딩 완료!") //콘솔에서 music.paly() 하면 (처음부터)재생 + music.pause() 하면 일시정지
+        };
+
+        const music2 = document.querySelector("#music2");
+
+        const fire = new Audio("sound/fire.wav");
+        const birddie = new Audio("sound/birddie.mp3");
+
+    </script>
+</body>
+
+</html>
