@@ -101,6 +101,19 @@
         //초침 이미지
         const secImg = new Image();
         secImg.src = "images/clock_sec.png";
+
+        //분침 이미지
+        const minImg = new Image();
+        minImg.src = "images/clock_min.png";
+
+        //시침 이미지
+        const hourImg = new Image();
+        hourImg.src = "images/clock_hour.png";
+
+        //캡 이미지
+        const capImg = new Image();
+        capImg.src = "images/clock_point.png";
+
         //시계를 그릴 좌표
         const clockX = 700;
         const clockY = 100;
@@ -124,11 +137,34 @@
             //시계 그리기
             context.drawImage(dialImg, 0 - 100, 0 - 100, 200, 200);
             //테스트로 초침을 그리기 전에 context를 30도 회전해서 그려보기
-            context.rotate(count * Math.PI / 180);
+            //context.rotate(count * Math.PI / 180);
 
-            //초침 그리기 (시계 중심 좌표를 기준으로 그려본다)
-            //canvas는 좌상단이 기준
-            context.drawImage(secImg, 0 - 4, 0 - 80, 7, 90);
+            //현재 시간
+            const d = new Date();
+            const hour = d.getHours();
+            const min = d.getMinutes();
+            const sec = d.getSeconds();
+
+            //초침의 회전각 계산
+            const rSec = 6 * sec * (Math.PI / 180); //rad
+
+            //초침의 회전각 만큼 좌표계를 회전시켜서
+            context.rotate(rSec);
+            //초침그리기 (시계중심 좌표를 기준으로 그려본다)
+            context.drawImage(secImg, 0 - 4, 0 - 85, 8, 85);
+            //분침의 회전각 계산
+            const rMin = (6 * min + 6 * sec / 60) * (Math.PI / 180);
+            //분침의 회전각 만큼 좌표계를 회전시켜서
+            context.rotate(rMin - rSec);
+            //분침
+            context.drawImage(minImg, 0 - 4, 0 - 75, 7, 75);
+            //시침의 회전각 계산
+            const rHour = (30 * hour + 30 * min / 60) * (Math.PI / 180);
+            context.rotate(rHour - rMin);
+            //시침
+            context.drawImage(hourImg, 0 - 4, 0 - 60, 8, 60);
+
+            context.drawImage(capImg, -7, -7, 14, 14);
 
             //다른 그림에 영향이 가지 않도록 저장했던 정상상태로 context를 되돌린다.
             context.restore();
