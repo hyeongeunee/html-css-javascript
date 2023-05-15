@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step10_JSON.html</title>
+</head>
+
+<body>
+    <h1>Json 문자열 사용해보기</h1>
+    <p>
+        <strong>Java Script Object Notataion</strong> (자바스크립트 객체 표기법)
+        을 따르는 문자열을 JSON 문자열이라고 한다.
+    </p>
+    <script>
+        /*
+            [xml 형식으로 학생 한 명의 정보를 나타내면 아래와 같다]
+            <student>
+                <name>김민규</name>
+                <addr>신림동</addr>
+            </student>
+
+            or
+
+            <studemt name = "김민규" addr="신림동"/>
+            
+            [json 형식으로 학생 한 명의 정보를 나타낸다면]
+
+            {"name":"김민규", "addr":"신림동"}
+
+            - key값은 반드시 double quotation 으로 감싸야 한다.
+            - value 로 작성할 수 있는 형식
+             1. 문자열 "xxx"
+             2. 숫자   10
+             3. 논리   true or false
+             4. 빈값   null
+             5. 또 하나의 json { }
+             6. 또 하나의 json [ ]
+             
+             [value1, value2, value3 ...]
+        */
+
+        //JSON 형식의 문자열
+        const data = `
+            {  
+                "num":1,
+                "name":"김구라",
+                "isMan":true,
+                "addr":null,
+                "friends": ["해골","원숭이","주뎅이"],
+                "company": {
+                    "name":"에이콘",
+                    "addr":"강남역"
+                }
+            }
+        `; //지금은 String type.
+
+        //JSON 형식의 문자열을 이용해서 object 만들기
+        const result = JSON.parse(data);
+
+        //object를 이용해서 JSON 형식의 문자ㅣ열 만들기
+        const result2 = JSON.stringify(result);
+
+
+    </script>
+</body>
+
+</html>
