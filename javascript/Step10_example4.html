@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step10_example4.html</title>
+</head>
+
+<body>
+    <input type="text" placeholder="번호입력..." id="inputNum">
+    <br>
+    <input type="text" placeholder="이름입력..." id="inputName">
+    <br>
+    <input type="text" placeholder="주소입력..." id="inputAddr">
+    <br>
+    <button id="saveBtn">저장</button>
+    <button id="deleteBtn">삭제</button>
+    <script>
+        //번호, 이름, 주소를 입력하고 저장 버튼을 누르면 localStorage에 저장하고 
+        //삭제 버튼을 누르면 localStorage에 저장된 정보를 삭제하고
+        document.querySelector("#saveBtn").addEventListener("click", () => {
+            //1. 입력한 내용을 읽어와서
+            const num = Number(document.querySelector("#inputNum").value);
+            const name = document.querySelector("#inputName").value;
+            const addr = document.querySelector("#inputAddr").value;
+            //2. object에 담고
+            const obj = { num, name, addr };
+            //3. object를 JSON 문자열로 만들어서
+            const json = JSON.stringify(obj);
+            //4. localStorage에 저장
+            localStorage.savedMember = json;
+        })
+
+        document.querySelector("#deleteBtn").addEventListener("click", () => {
+            delete localStorage.savedMember;
+        })
+
+        //페이지 로딩 시점에 localStorage에 저장된 번호, 이름, 주소가 있다면
+        //위의 input 요소에 출력되도록 해보세요.
+        if (localStorage.savedMember) {
+            //localStorage에 저장된 문자열을 이용해서 object를 만든다.
+            const obj = JSON.parse(localStorage.savedMember);
+            //object에 저장된 내용을 input 요소에 출력한다.
+            document.querySelector("#inputNum").value = obj.num;
+            document.querySelector("#inputName").value = obj.name;
+            document.querySelector("#inputAddr").value = obj.addr;
+        }
+
+
+        // if (localStorage.savedNum) document.querySelector("#inputNum").value = localStorage.savedNum;
+        // if (localStorage.savedName) document.querySelector("#inputName").value = localStorage.savedName;
+        // if (localStorage.savedAddr) document.querySelector("#inputAddr").value = localStorage.savedAddr;
+
+        // let savedNum, savedName, saveAddr;
+
+        // document.querySelector("#saveBtn").addEventListener("click", () => {
+        //     let num = document.querySelector("#inputNum").value;
+        //     let name = document.querySelector("#inputName").value;
+        //     let addr = document.querySelector("#inputAddr").value;
+        //     savedNum = num;
+        //     savedName = name;
+        //     savedAddr = addr;
+        //     localStorage.savedNum = num;
+        //     localStorage.savedName = name;
+        //     localStorage.savedAddr = addr;
+        // })
+
+        // document.querySelector("#deleteBtn").addEventListener("click", () => {
+        //     delete localStorage.savedNum;
+        //     delete localStorage.savedName;
+        //     delete localStorage.savedAddr;
+        // })
+
+
+    </script>
+</body>
+
+</html>
