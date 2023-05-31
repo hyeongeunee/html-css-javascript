@@ -6,24 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Step02_form3.html</title>
-    <link rel="stylesheet
-    " href="css/bootstrap.css">
+    <link rel="stylesheet " href="css/bootstrap.css">
 </head>
 
 <body>
     <div class="container">
         <h1>회원가입 폼</h1>
         <form action="">
-            <div>
+            <div class="mb-2">
                 <label class="form-label" for="id">아이디</label>
                 <input class="form-control" type="text" id="id" name="id">
                 <div class="invalid-feedback">
                     5 글자 이상 입력하세요!
                 </div>
             </div>
+            <div class="mb-2">
+                <label for="email" class="form-label">이메일</label>
+                <input type="text" class="form-control" id="email" name="email">
+                <div class="invalid-feedback">
+                    이메일 형식에 맞게 입력해주세요!
+                </div>
+            </div>
+            <button class="btn btn-primary btn-sm" type="submit" disabled="disabled">가입</button>
         </form>
     </div>
     <script>
+        let isFormValid = false;
+        let isIdVaild = false;
+        let isEmailValid = false;
+
         //아이디 입력란에 입력을 할 때마다 호출되는 콜백함수 등록하기
         document.querySelector("#id").addEventListener("input", (e) => {
             //1. 입력한 아이디를 읽어온다
@@ -31,7 +42,7 @@
             //const inputId2 = document.querySelector("#id").value;
 
             //2. 아이디가 5글자 이상인지 여부를 판별한다.
-            const isIdVaild = inputId.length >= 5;
+            isIdVaild = inputId.length >= 5;
             //3. 만일 5글자 이상이면 is-vaild 를 추가하고 is-invalid는 제거한다.
             //만일 5글자 미만이면 is-vaild를 추가하고 is-vaild는 제거한다.
             if (isIdVaild) {
@@ -41,14 +52,42 @@
                 e.target.classList.add("is-invalid");
                 e.target.classList.remove("is-valid");
             }
+            buttonChange();
 
-            // let str = document.querySelector("#id").value;
+            // const str = document.querySelector("#id").value;
             // document.querySelector("#id").classList.add("is-invalid")
             // if (str.length >= 5) {
             //     document.querySelector("#id").classList.remove("is-invalid")
             //     document.querySelector("#id").classList.add("is-valid")
             // }
+        });
+
+        document.querySelector("#email").addEventListener("input", (e) => {
+            //1. 입력한 이메일 주소를 읽어온다.
+            const inputEmail = e.target.value;
+            //2. 이메일을 검증할 정규 표현식 객체 생성
+            let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+            //3. 이메일 형식에 부합하는지 확인
+            isEmailValid = regex.test(inputEmail);
+            //4. 부합하는지 여부에 따라서 is-valid와 is-invalid 클래스를 추가 혹은 제거하기
+            if (isEmailValid) {
+                e.target.classList.add("is-valid");
+                e.target.classList.remove("is-invalid");
+            } else {
+                e.target.classList.add("is-invalid");
+                e.target.classList.remove("is-valid");
+            }
+            buttonChange();
         })
+        //document.querySelector("button[type=submit]").removeAttribute("disabled"); //제거
+        //document.querySelector("button[type=submit]").setAttribute("disabled", "disabled") //추가(속성명, 속성값)
+
+        function buttonChange() {
+            //폼 전체가 유효한지 여부
+            isFormValid = isIdVaild && isEmailValid;
+            if (isFormValid) document.querySelector("button[type=submit]").removeAttribute("disabled");
+            else document.querySelector("button[type=submit]").setAttribute("disabled", "disabled");
+        }
     </script>
 </body>
 
