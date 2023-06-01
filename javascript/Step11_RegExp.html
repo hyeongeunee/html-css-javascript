@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step11_RegExp.html</title>
+</head>
+
+<body>
+    <h1>정규표현식 객체 생성하기</h1>
+    <script>
+        //정규표현식으로 검증할 문자열
+        const str = "abcabcabc";
+
+        //exec 는 매칭되는 문자열 찾는거고 test 는 t/f 구분 
+        //exec 는 찾은 문자열을 추출할 때 사용
+
+        /*
+            . 은 아무거나 1글자
+            [abc] abc 중에 한글자
+            [a-z] a~z 범위내에 한글자
+            [가-힣] 한글 한글자
+            [0-9] 숫자 하나
+            [a-zA-Z0-9] 특수문자가 아닌 한글자
+            [0-9] == [\d]
+            [a-zA-Z0-9] == [\w]
+            [^0-9] == [^\w] == [\D]
+            [^a-zA-Z0-9] == [^\w] == [\W]
+        */
+
+        //생성하는 방법 1
+        const reg1 = /a/; //슬래시 안에 작성한 문자열이 정규표현식이다.
+
+        //생성하는 방법 2
+        const reg2 = new RegExp("a"); // "" 안에 작성한 문자열이 정규표현식이다.
+    </script>
+</body>
+
+</html>
