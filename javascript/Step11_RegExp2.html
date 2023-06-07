@@ -18,7 +18,8 @@
             //1. 입력한 문자열을 읽어와서
             const reg = /^[\w]+$/;
             const reg1 = /^[a-zA-Z0-9ㄱ-ㅎ가-힇]+$/;
-
+            //문자열로 정규표현식을 작성할 때 역슬래시 하나당 역슬래시 2개를 작성해야 한다.
+            // const reg2 = new RegExp("^[\\w]+$")
             const msg = e.target.value;
             //2. "반드시 입력(한글자 이상)해야하고 특수문자는 허용하지 않습니다." 조건을 만족하려면
             //   id가 result 인 p 요소의 innerText로 "pass"를 출력하고
