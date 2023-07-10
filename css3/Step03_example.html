@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step03_example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @keyframes dropAni {
+            0% {
+                transform: translateY(-500px);
+            }
+
+            25% {
+                transform: translateY(50px);
+            }
+
+            50% {
+                transform: translateY(-50px);
+            }
+
+            75% {
+                transform: translateY(5px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .drop {
+            animation: dropAni 1s ease-out;
+            /* animation: shakeY 1s ease-out; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Animation 예제</h1>
+        <img class="drop" src="../javascript/images/top01.jpg" alt="">
+    </div>
+</body>
+
+</html>
