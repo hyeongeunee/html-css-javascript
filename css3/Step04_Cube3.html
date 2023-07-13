@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Step04_Cube3</title>
+        <style>
+            h3 {
+                margin-bottom: 5rem;
+            }
+
+            .wrapper {
+                perspective: 500px;
+                perspective-origin: 50% 50%;
+            }
+
+            .cube {
+                width: 400px;
+                height: 400px;
+                margin: 0 auto;
+                transform-style: preserve-3d;
+                transform-origin: 50% 50%;
+                transform: translateZ(-200px);
+                transition: transform 1s ease-out;
+            }
+
+            .cube > div {
+                border: 1px solid red;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 400px;
+                height: 400px;
+                background-color: antiquewhite;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 100px;
+                font-weight: bold;
+                opacity: 0.5;
+            }
+
+            /* .cube > div:nth-child(1) {
+                transform: translateZ(200px);
+            }
+
+            .cube > div:nth-child(2) {
+                transform: rotateY(90deg) translateZ(200px);
+            }
+
+            .cube > div:nth-child(3) {
+                transform: rotateY(180deg) translateZ(200px);
+            }
+
+            .cube > div:nth-child(4) {
+                transform: rotateY(-90deg) translateZ(200px);
+            } */
+
+            .nav {
+                display: flex;
+                justify-content: center;
+                margin-top: 2rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h3>3d cube 테스트</h3>
+            <div class="wrapper">
+                <div class="cube"></div>
+            </div>
+            <div class="nav">
+                <button id="leftBtn">&larr;</button>
+                <button id="rightBtn">&rarr;</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        // 만들어야 할 div 가 4개이기 때문에 반복문 4번 돌기
+        for (let i = 1; i < 5; i++) {
+            // div 를 만들어서
+            const divs = document.createElement('div');
+            // innerText 를 출력하고
+            divs.innerText = i;
+            // .cube 에 추가하기
+            document.querySelector('.cube').append(divs);
+        }
+
+        // javascript 로 div 4개를 3d 로 배치해보세요.
+
+        // .cube 안에 있는 모든 div 의 참조값을 배열로 얻어내기
+        let divs = document.querySelectorAll('.cube div');
+        // 반복문 돌면서 모든 div 에 transform 적용하기
+        for (let i = 0; i < divs.length; i++) {
+            divs[i].style.transform = `rotateY(${90 * i}deg) translateZ(200px)`;
+        }
+
+        // y 축 기준으로 회전하는 값을 저장할 변수 선언하고 초기값 0 대입
+        let rY = 0;
+
+        document.querySelector('#leftBtn').addEventListener('click', () => {
+            rY -= 90;
+            document.querySelector('.cube').style.transform = 'translateZ(-200px) rotateY(' + rY + 'deg)';
+        });
+
+        document.querySelector('#rightBtn').addEventListener('click', () => {
+            rY += 90;
+            document.querySelector('.cube').style.transform = `translateZ(-200px) rotateY(${rY}deg)`;
+        });
+    </script>
+</html>
