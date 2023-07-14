@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Step04_Poligon.html</title>
+        <title>Step04_polygon.html</title>
         <style>
             .wrapper {
                 perspective: 500px;
@@ -13,7 +13,7 @@
                 display: flex;
                 align-items: center;
             }
-            .poligon {
+            .polygon {
                 width: 400px;
                 height: 400px;
                 margin: 0 auto;
@@ -21,7 +21,7 @@
                 transform-origin: 50% 50%;
                 transition: transform 1s ease-out;
             }
-            .poligon > div {
+            .polygon > div {
                 border: 1px solid red;
                 position: absolute;
                 top: 0;
@@ -45,9 +45,9 @@
     </head>
     <body>
         <div class="container">
-            <h3>3d poligon 테스트</h3>
+            <h3>3d polygon 테스트</h3>
             <div class="wrapper">
-                <div class="poligon"></div>
+                <div class="polygon"></div>
             </div>
             <div class="nav">
                 <button id="leftBtn">&larr;</button>
@@ -83,14 +83,14 @@
                 const div = document.createElement('div');
                 //innerText 를 출력하고
                 div.innerText = i + 1;
-                //.poligon 에 추가하기
-                document.querySelector('.poligon').append(div);
+                //.polygon 에 추가하기
+                document.querySelector('.polygon').append(div);
             }
 
-            document.querySelector('.poligon').style.transform = 'translateZ(-' + tz + 'px)';
+            document.querySelector('.polygon').style.transform = 'translateZ(-' + tz + 'px)';
 
-            // .poligon 안에 있는 모든 div 의 참조값을 배열로 얻어내기
-            const divs = document.querySelectorAll('.poligon div');
+            // .polygon 안에 있는 모든 div 의 참조값을 배열로 얻어내기
+            const divs = document.querySelectorAll('.polygon div');
 
             //반복문 돌면서 모든 div 에 transform 적용하기
             for (let i = 0; i < divs.length; i++) {
@@ -103,12 +103,12 @@
 
             document.querySelector('#leftBtn').addEventListener('click', () => {
                 rY -= angle;
-                document.querySelector('.poligon').style.transform = 'translateZ(-' + tz + 'px) rotateY(' + rY + 'deg)';
+                document.querySelector('.polygon').style.transform = 'translateZ(-' + tz + 'px) rotateY(' + rY + 'deg)';
             });
 
             document.querySelector('#rightBtn').addEventListener('click', () => {
                 rY += angle;
-                document.querySelector('.poligon').style.transform = `translateZ(-${tz}px) rotateY(${rY}deg)`;
+                document.querySelector('.polygon').style.transform = `translateZ(-${tz}px) rotateY(${rY}deg)`;
             });
         </script>
     </body>
