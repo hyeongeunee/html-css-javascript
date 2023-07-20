@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Step05_example</title>
+        <style>
+            /* 네비바 만들기 */
+            .main-nav {
+                background-color: orangered;
+                color: white;
+                /* 
+                    root 요소(html) 의 글자크기를 1rem 이라고 한다.
+                    글자 크기를 지정하지 않으면 글자 크기는 기본 16px 로 설정되기 때문에
+                    1rem 은 16px 이 된다.
+                 */
+                padding: 1rem;
+            }
+
+            nav ul {
+                /* ul 의 기본 스타일 제거 */
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                /* ul 의 자식요소를 가로로 배치하기 위해 */
+                display: flex;
+                /* column-gap: 1rem; */
+            }
+
+            nav li {
+                margin-right: 2rem;
+            }
+
+            nav a {
+                color: #fff;
+                /* a 요소의 밑줄 제거 */
+                text-decoration: none;
+                font-size: 16px;
+            }
+
+            nav a:hover {
+                color: rgb(0, 0, 0);
+                /* text-decoration: underline; */
+            }
+
+            body {
+                margin: 0;
+            }
+
+            /* 
+                반응형 레이아웃
+                device 의 폭이 최대 575px 까지만 적용할 css
+            */
+            @media (max-width: 575px) {
+                .main-nav ul {
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#">Logo</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Study</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+        </nav>
+    </body>
+</html>
